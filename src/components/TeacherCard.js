@@ -15,8 +15,8 @@ function TeacherCard({ teacher }) {
         <div className="grid grid_3">
             <div className="nicdark_section">
                 <div className="nicdark_section">
-                    <div className="nicdark_section nicdark_position_relative">
-                        <img alt="" className="nicdark_section" src={teacher.cardPhoto} />
+                    <div className="nicdark_section nicdark_position_relative" style={{ width: '100%', height: '200px' }}>
+                        <img alt="" className="nicdark_section" src={teacher.cardPhoto} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         <div className="nicdark_bg_greydark_alpha_gradient nicdark_position_absolute nicdark_left_0 nicdark_height_100_percentage nicdark_width_100_percentage nicdark_padding_20 nicdark_box_sizing_border_box">
                             <div className="nicdark_position_absolute nicdark_bottom_20">
                                 <div className="nicdark_display_inline_block">

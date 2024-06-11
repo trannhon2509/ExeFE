@@ -14,7 +14,7 @@ function Header() {
                 <ul>
                   <li>
                     <img alt="img" className="nicdark_margin_right_10 " width={15} src="img/icons/icon-world-white.svg" />
-                    <Link className=" nicdark_line_height_18 nicdark_color_white" to={RoutePath.HOME}>LANGUAGES</Link>
+                    <Link className=" nicdark_line_height_18 nicdark_color_white" to={RoutePath.HOME}>Ngôn ngữ</Link>
                     <ul className="nicdark_sub_menu">
                       <li><Link to={RoutePath.HOME}>English</Link></li>
                       <li><Link to={RoutePath.HOME}>Russian</Link></li>
@@ -23,7 +23,7 @@ function Header() {
                   </li>
                   <li>
                     <img alt="img" className="nicdark_margin_right_10" width={15} src="img/icons/icon-share-white.svg" />
-                    <Link className=" nicdark_line_height_18 nicdark_color_white" to={RoutePath.HOME}>OUR SOCIAL</Link>
+                    <Link className=" nicdark_line_height_18 nicdark_color_white" to={RoutePath.HOME}>Mạng xã hội</Link>
                     <ul className="nicdark_sub_menu">
                       <li><Link target="_blank" href="https://www.facebook.com/cleanthemeslab">Facebook</Link></li>
                       <li><Link target="_blank" href="https://dribbble.com/cleanthemeslab">Dribbble</Link></li>
@@ -95,20 +95,9 @@ function Header() {
                     <Link to={RoutePath.TEACHERS}>TEACHERS</Link>
 
                   </li>
-                  <li>
-                    <Link to={RoutePath.ABOUTUS}>PAGES</Link>
-                    <ul className="nicdark_sub_menu">
-                      <li><Link to={RoutePath.ABOUTUS}>About Us</Link></li>
-                      <li><Link to={RoutePath.SERVICES}>Services</Link></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <Link to={RoutePath.BLOG}>BLOG</Link>
-
-                  </li>
-                  <li>
-                    <Link href="contact-1.html">CONTACT</Link>
-                  </li>
+                  <li><Link to={RoutePath.ABOUTUS}>Contact Us</Link></li>
+                 
+                  
                 </ul>
               </div>
               <div className="nicdark_section nicdark_height_10" />

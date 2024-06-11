@@ -9,7 +9,7 @@ function CartItem({ course, onRemove, onUpdateQuantity }) {
     return (
         <tr>
             <th scope="row">
-                {course.subjectName}
+                {course.title}
             </th>
             <td >
                 ${course.totalMoneyMonthTeaching}

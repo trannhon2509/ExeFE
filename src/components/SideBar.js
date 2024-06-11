@@ -10,8 +10,8 @@ function SideBar() {
                 <Link to={RoutePath.ADMINUSER} className="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
                     <h2>User</h2>
                 </Link>
-                <Link to={RoutePath.ADMINTUTOR} className="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
-                    <h2>Tutor</h2>
+                <Link to={RoutePath.ADMINTEACHER} className="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
+                    <h2>Teacher</h2>
                 </Link>
                 {/* <Link to={RoutePath.ADMINTEACHER}  className="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
                     <h2>Teacher</h2>

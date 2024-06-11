@@ -5,48 +5,49 @@ import RoutePath from '../config/RoutePath';
 
 function Cart() {
     const [courses, setCourses] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
-        const storedCourses = localStorage.getItem('courses');
+        const storedCourses = localStorage.getItem('coursesCard');
         if (storedCourses) {
-            setCourses(JSON.parse(storedCourses));
-            console.log(storedCourses);
+            const parsedCourses = JSON.parse(storedCourses);
+            setCourses(parsedCourses);
+            calculateTotalPrice(parsedCourses); // Call calculateTotalPrice after updating courses
         }
     }, []);
 
+    const calculateTotalPrice = (courses) => {
+        let total = 0;
+        courses.forEach(course => {
+            total += course.totalCost;
+        });
+        setTotalPrice(total);
+    };
+
     const handleAddCourse = (course) => {
-        setCourses((prevCourses) => [...prevCourses, course]);
-        localStorage.setItem('courses', JSON.stringify([...courses, course]));
+        const updatedCourses = [...courses, course];
+        setCourses(updatedCourses);
+        localStorage.setItem('coursesCard', JSON.stringify(updatedCourses));
+        calculateTotalPrice(updatedCourses);
     };
 
     const handleRemoveCourse = (courseId) => {
-        setCourses((prevCourses) => prevCourses.filter((course) => course.id !== courseId));
-        localStorage.setItem(
-            'courses',
-            JSON.stringify(courses.filter((course) => course.id !== courseId))
-        );
+        const updatedCourses = courses.filter((course) => course.id !== courseId);
+        setCourses(updatedCourses);
+        localStorage.setItem('coursesCard', JSON.stringify(updatedCourses));
+        calculateTotalPrice(updatedCourses);
     };
 
     const handleUpdateQuantity = (courseId, newQuantity) => {
-        setCourses((prevCourses) =>
-            prevCourses.map((course) => {
-                if (course.id === courseId) {
-                    return { ...course, quantity: newQuantity };
-                }
-                return course;
-            })
-        );
-        localStorage.setItem(
-            'courses',
-            JSON.stringify(
-                courses.map((course) => {
-                    if (course.id === courseId) {
-                        return { ...course, quantity: newQuantity };
-                    }
-                    return course;
-                })
-            )
-        );
+        const updatedCourses = courses.map((course) => {
+            if (course.id === courseId) {
+                return { ...course, quantity: newQuantity, totalCost: course.totalMoneyMonthTeaching * newQuantity };
+            }
+            return course;
+        });
+        setCourses(updatedCourses);
+        localStorage.setItem('coursesCard', JSON.stringify(updatedCourses));
+        calculateTotalPrice(updatedCourses);
     };
 
     console.log('Courses in cart:', courses);
@@ -65,7 +66,6 @@ function Cart() {
                                 <th scope="col">Total</th>
                                 <th scope="col">Delete</th>
                             </tr>
-
                         </thead>
                         <tbody>
                             {courses.map((course, index) => (
@@ -80,50 +80,46 @@ function Cart() {
                     </table>
                 </div>
                 <div className='my-5 col-md-4'>
-                    <table class="nicdark_section">
+                    <table className="nicdark_section">
                         <thead>
-                            <tr class="nicdark_border_bottom_2_solid_grey">
-                                <td class="nicdark_padding_20 nicdark_width_50_percentage">
-                                    <h6 class="nicdark_text_transform_uppercase">TOTALS</h6>
+                            <tr className="nicdark_border_bottom_2_solid_grey">
+                                <td className="nicdark_padding_20 nicdark_width_50_percentage">
+                                    <h6 className="nicdark_text_transform_uppercase">TOTALS</h6>
                                 </td>
-                                <td class="nicdark_padding_20 nicdark_width_50_percentage">
-                                </td>
+                                <td className="nicdark_padding_20 nicdark_width_50_percentage"></td>
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr class="">
-                                <td class="nicdark_padding_20">
+                            <tr className="">
+                                <td className="nicdark_padding_20">
                                     <p>Subtotal</p>
                                 </td>
-                                <td class="nicdark_padding_20">
-                                    <p class="nicdark_color_greydark">$ 50,00</p>
+                                <td className="nicdark_padding_20">
+                                    <p className="nicdark_color_greydark">$ {totalPrice.toFixed(2)}</p>
                                 </td>
                             </tr>
-                            <tr class="nicdark_border_bottom_2_solid_grey">
-                                <td class="nicdark_padding_20">
+                            <tr className="nicdark_border_bottom_2_solid_grey">
+                                <td className="nicdark_padding_20">
                                     <p>Method</p>
                                 </td>
-                                <td class="nicdark_padding_20">
-                                    <p class="nicdark_color_greydark">Paypal</p>
+                                <td className="nicdark_padding_20">
+                                    <p className="nicdark_color_greydark">Paypal</p>
                                 </td>
                             </tr>
-                            <tr class="">
-                                <td class="nicdark_padding_20">
+                            <tr className="">
+                                <td className="nicdark_padding_20">
                                     <p>Total</p>
                                 </td>
-                                <td class="nicdark_padding_20">
-                                    <h2><strong>$ 50,00</strong></h2>
+                                <td className="nicdark_padding_20">
+                                    <h2><strong>$ {totalPrice.toFixed(2)}</strong></h2>
                                 </td>
                             </tr>
                             <tr>
-                                <td> <Link to={RoutePath.COURSE} className='btn btn-lg btn-danger rounded-0 fw-bold'><i class="bi bi-arrow-left-circle-fill"></i> Return to buy</Link></td>
-                                <td> <Link to={RoutePath.CHECKOUT} className='btn btn-lg btn-success rounded-0 fw-bold'>Check out <i class="bi bi-arrow-right-circle-fill"></i></Link></td>
+                                <td> <Link to={RoutePath.COURSE} className='btn btn-lg btn-danger rounded-0 fw-bold'><i className="bi bi-arrow-left-circle-fill"></i> Return to buy</Link></td>
+                                <td> <Link to={RoutePath.CHECKOUT} className='btn btn-lg btn-success rounded-0 fw-bold'>Check out <i className="bi bi-arrow-right-circle-fill"></i></Link></td>
                             </tr>
                         </tbody>
-
                     </table>
-
                 </div>
             </div>
         </div>

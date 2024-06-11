@@ -1,65 +1,51 @@
 import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Modal, Form } from 'react-bootstrap';
-import ReactPaginate from 'react-paginate';
 import { TeacherContext } from '../contexts/TeacherContext';
-
+import ReactPaginate from 'react-paginate';
+import { addCourse, editCourse, deleteCourse, users as initialUsers } from '../data';
 function AdminUser() {
-  const [users, setUsers] = useState([]);
+  const [subjects, setSubjects] = useState([]);
   const [show, setShow] = useState(false);
   const [modalType, setModalType] = useState('');
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedSubject, setSelectedSubject] = useState(null);
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    passwordRepeat: '',
     email: '',
-    firstName: '',
-    lastName: '',
-    address: '',
-    phoneNumber: '',
-    isActive: true,
-    listUserRoles: [{ id: 1 }]
+    imageUrl: '', // Add imageUrl field
   });
   const [pageNumber, setPageNumber] = useState(0);
-  const usersPerPage = 4;
-  const pagesVisited = pageNumber * usersPerPage;
+  const subjectsPerPage = 4;
 
   const { token } = useContext(TeacherContext);
 
-  const fetchUsers = async () => {
-    const response = await fetch(`http://localhost:8080/api/user/list?page=${pageNumber}&record=${usersPerPage}`, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-    const data = await response.json();
-    setUsers(data);
+  // Function to fetch subjects from localStorage
+  const fetchSubjects = () => {
+    // Retrieve subjects from localStorage or fallback to initialCourses
+    const storedCourses = JSON.parse(localStorage.getItem('users')) || initialUsers;
+    setSubjects(storedCourses);
   };
 
   useEffect(() => {
-    fetchUsers();
-  }, [pageNumber]);
+    fetchSubjects();
+  }, []); // Fetch subjects only once when component mounts
 
-  const handleShow = (type, user = null) => {
+  const handleShow = (type, subject = null) => {
     setModalType(type);
-    setSelectedUser(user);
+    setSelectedSubject(subject);
     setShow(true);
 
-    if (user) {
-      setFormData({ ...user, listUserRoles: user.listUserRoles || [{ id: 1 }] });
+    if (subject) {
+      setFormData(subject);
     } else {
       setFormData({
-        username: '',
-        password: '',
-        passwordRepeat: '',
-        email: '',
-        firstName: '',
-        lastName: '',
-        address: '',
-        phoneNumber: '',
-        isActive: true,
-        listUserRoles: [{ id: 1 }]
+        title: '',
+        description: '',
+        totalMoneyMonthTeaching: 0,
+        numberTeachOfWeek: 0,
+        oneHourTeaching: 0,
+        imageUrl: '', // Reset imageUrl field
       });
     }
   };
@@ -74,74 +60,70 @@ function AdminUser() {
     });
   };
 
-  const handleSave = async () => {
-    const url = modalType === 'create' ? 'http://localhost:8080/auth/signup' : `http://localhost:8080/api/user/update/${selectedUser.id}`;
-    const method = modalType === 'create' ? 'POST' : 'PUT';
+  const handleSave = () => {
+    if (modalType === 'create') {
+      const newCourse = { id: subjects.length + 1, ...formData };
+      addCourse(newCourse);
+    } else {
+      editCourse(formData);
+    }
 
-    await fetch(url, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify(formData)
-    });
-
-    fetchUsers();
+    fetchSubjects();
     handleClose();
   };
 
-  const handleDelete = async (id) => {
-    await fetch(`http://localhost:8080/api/user/delete/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-
-    fetchUsers();
+  const handleDelete = (id) => {
+    deleteCourse(id);
+    fetchSubjects();
   };
 
+  // Function to handle page change
   const handlePageClick = ({ selected }) => {
     setPageNumber(selected);
   };
 
+  const offset = pageNumber * subjectsPerPage;
+  const currentPageSubjects = subjects.slice(offset, offset + subjectsPerPage);
   return (
-    <div className="container">
-      <h1>Admin User</h1>
+    <div className="container" style={{ height: "600px" }}>
+      <h1>Admin Subjects</h1>
       <Button variant="primary" onClick={() => handleShow('create')}>
-        Create User
+        Create Subject
       </Button>
       <table className="table mt-4">
         <thead>
           <tr>
+            <th>Image</th>
             <th>Username</th>
+            <th>Password</th>
             <th>Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {users.map(user => (
-            <tr key={user.userId}>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.firstName}</td>
-              <td>{user.lastName}</td>
+          {currentPageSubjects.map(subject => (
+            <tr key={subject.id}>
               <td>
-                <Button variant="warning" onClick={() => handleShow('update', user)}>Edit</Button>
-                <Button variant="danger" onClick={() => handleDelete(user.userId)}>Delete</Button>
+                {subject.imageUrl && <img src={subject.imageUrl} alt={subject.title} style={{ width: '50px', height: '50px' }} />}
+              </td>
+              <td>{subject.username}</td>
+              <td>{subject.password}</td>
+              <td>{subject.email}</td>
+
+              <td className='d-flex justify-content-between'>
+                <Button variant="warning" onClick={() => handleShow('update', subject)}>Edit</Button>
+                <Button variant="danger" onClick={() => handleDelete(subject.id)}>Delete</Button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
+      {/* Pagination */}
       <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}
-        pageCount={Math.ceil(users.length / usersPerPage)}
+        pageCount={Math.ceil(subjects.length / subjectsPerPage)}
         onPageChange={handlePageClick}
         containerClassName={"pagination"}
         activeClassName={"active"}
@@ -156,13 +138,67 @@ function AdminUser() {
         breakLinkClassName="page-link"
       />
 
+      {/* Modal for creating/updating a subject */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{modalType === 'create' ? 'Create User' : 'Update User'}</Modal.Title>
+          <Modal.Title>{modalType === 'create' ? 'Create Subject' : 'Edit Subject'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            {/* Form fields here */}
+            <Form.Group>
+              <Form.Label>Subject Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                type="text"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Total Money/Month Teaching</Form.Label>
+              <Form.Control
+                type="number"
+                name="totalMoneyMonthTeaching"
+                value={formData.totalMoneyMonthTeaching}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Number Teach/Week</Form.Label>
+              <Form.Control
+                type="number"
+                name="numberTeachOfWeek"
+                value={formData.numberTeachOfWeek}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>One Hour Teaching</Form.Label>
+              <Form.Control
+                type="number"
+                name="oneHourTeaching"
+                value={formData.oneHourTeaching}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Image URL</Form.Label>
+              <Form.Control
+                type="text"
+                name="imageUrl"
+                value={formData.imageUrl}
+                onChange={handleChange}
+              />
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -175,7 +211,7 @@ function AdminUser() {
         </Modal.Footer>
       </Modal>
     </div>
-  );
+  )
 }
 
-export default AdminUser;
+export default AdminUser

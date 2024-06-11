@@ -25,6 +25,7 @@ const LoginForm = () => {
 
     if (data.status === 200) {
       toast.success('Sign in success');
+      console.log(data.data)
       localStorage.setItem('token', data.data);
       
       // Redirect to home page

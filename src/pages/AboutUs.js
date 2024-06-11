@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import RoutePath from '../config/RoutePath'
+import TeacherCard from '../components/TeacherCard'
+import { teachers } from '../data'
 
 function AboutUs() {
   return (
@@ -50,87 +52,13 @@ function AboutUs() {
             </div>
           </div>
           <div className="nicdark_section nicdark_height_40" />
-          <div className="grid grid_4">
-            <div className="nicdark_section nicdark_box_sizing_border_box">
-              <div className="nicdark_section nicdark_position_relative">
-                <img alt="" className="nicdark_section" src="img/avatar/avatar-chef-3.jpg" />
-                <div className="nicdark_bg_greydark_alpha_gradient_3 nicdark_position_absolute nicdark_left_0 nicdark_height_100_percentage nicdark_width_100_percentage nicdark_box_sizing_border_box">
-                  <div className="nicdark_position_absolute nicdark_bottom_30 nicdark_width_100_percentage nicdark_padding_botttom_0 nicdark_padding_50 nicdark_box_sizing_border_box nicdark_text_align_center">
-                    <h2 className="nicdark_color_white"><strong>Jane Doe</strong></h2>
-                    <div className="nicdark_section nicdark_height_10" />
-                    <h6 className="nicdark_text_transform_uppercase nicdark_color_white">English Teacher
-                    </h6>
-                    <div className="nicdark_section nicdark_height_20" />
-                    <p className="nicdark_color_white nicdark_display_none_all_iphone">Lorem ipsum dolor
-                      sit amet, consectetur adipiscing elit. Aenean egestas magna at.</p>
-                    <div className="nicdark_section nicdark_height_20 nicdark_display_none_all_iphone">
-                    </div>
-                    <div className="nicdark_display_inline_block">
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-twitter-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-pinterest-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-linkedin-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-google-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-instagram-white.svg" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid_4">
-            <div className="nicdark_section nicdark_box_sizing_border_box">
-              <div className="nicdark_section nicdark_position_relative">
-                <img alt="" className="nicdark_section" src="img/avatar/avatar-chef-6.jpg" />
-                <div className="nicdark_bg_greydark_alpha_gradient_3 nicdark_position_absolute nicdark_left_0 nicdark_height_100_percentage nicdark_width_100_percentage nicdark_box_sizing_border_box">
-                  <div className="nicdark_position_absolute nicdark_bottom_30 nicdark_width_100_percentage nicdark_padding_botttom_0 nicdark_padding_50 nicdark_box_sizing_border_box nicdark_text_align_center">
-                    <h2 className="nicdark_color_white"><strong>Jack Johnson</strong></h2>
-                    <div className="nicdark_section nicdark_height_10" />
-                    <h6 className="nicdark_text_transform_uppercase nicdark_color_white">Art Teacher
-                    </h6>
-                    <div className="nicdark_section nicdark_height_20 " />
-                    <p className="nicdark_color_white nicdark_display_none_all_iphone">Lorem ipsum dolor
-                      sit amet, consectetur adipiscing elit. Aenean egestas magna at.</p>
-                    <div className="nicdark_section nicdark_height_20 nicdark_display_none_all_iphone">
-                    </div>
-                    <div className="nicdark_display_inline_block">
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-twitter-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-pinterest-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-linkedin-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-google-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-instagram-white.svg" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid_4">
-            <div className="nicdark_section nicdark_box_sizing_border_box">
-              <div className="nicdark_section nicdark_position_relative">
-                <img alt="" className="nicdark_section" src="img/avatar/avatar-chef-5.jpg" />
-                <div className="nicdark_bg_greydark_alpha_gradient_3 nicdark_position_absolute nicdark_left_0 nicdark_height_100_percentage nicdark_width_100_percentage nicdark_box_sizing_border_box">
-                  <div className="nicdark_position_absolute nicdark_bottom_30 nicdark_width_100_percentage nicdark_padding_botttom_0 nicdark_padding_50 nicdark_box_sizing_border_box nicdark_text_align_center">
-                    <h2 className="nicdark_color_white"><strong>Elen Grey</strong></h2>
-                    <div className="nicdark_section nicdark_height_10" />
-                    <h6 className="nicdark_text_transform_uppercase nicdark_color_white">Geometry
-                      Teacher</h6>
-                    <div className="nicdark_section nicdark_height_20" />
-                    <p className="nicdark_color_white nicdark_display_none_all_iphone">Lorem ipsum dolor
-                      sit amet, consectetur adipiscing elit. Aenean egestas magna at.</p>
-                    <div className="nicdark_section nicdark_height_20 nicdark_display_none_all_iphone">
-                    </div>
-                    <div className="nicdark_display_inline_block">
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-twitter-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-pinterest-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-linkedin-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-google-white.svg" />
-                      <img alt="svg" width={15} className="nicdark_margin_right_10" src="img/icons/icon-instagram-white.svg" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {Array.isArray(teachers) && teachers.length > 0 ? (
+            teachers.slice(0, 4).map((teacher) => (
+              <TeacherCard key={teacher.id} teacher={teacher} />
+            ))
+          ) : (
+            <p>No teachers found</p>
+          )}
         </div>
       </div>
 

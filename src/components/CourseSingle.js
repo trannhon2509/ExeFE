@@ -397,7 +397,6 @@ function CourseSingle() {
                         <div className="nicdark_section nicdark_height_50" />
                     </div>
                 </div>
-                {/*end container*/}
             </div>
 
 

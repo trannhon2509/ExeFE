@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from 'react'
-import CourseCard from '../CourseCard'
+import React, { useEffect, useState } from 'react';
+import CourseCard from '../CourseCard';
 import ReactPaginate from 'react-paginate';
+import { courses as hardcodedCourses, addCourse as addCourseAPI, editCourse as editCourseAPI, deleteCourse as deleteCourseAPI } from '../../data';
 
 function GridCourse() {
     const [courses, setCourses] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
     const [pageSize, setPageSize] = useState(6);
     const [searchKeyword, setSearchKeyword] = useState('');
+
     useEffect(() => {
         fetchData();
-    }, [pageNumber, pageSize, searchKeyword]); 
+    }, [pageNumber, pageSize, searchKeyword]);
 
     const fetchData = () => {
-        fetch(`http://localhost:8080/api/subject/list?page=${pageNumber}&record=${pageSize}&keyword=${searchKeyword}`)
-            .then(response => response.json())
-            .then(data => setCourses(data))
-            .catch(error => console.error(error));
+        const filteredCourses = hardcodedCourses.filter(course => 
+            course.title.toLowerCase().includes(searchKeyword.toLowerCase()) || 
+            course.description.toLowerCase().includes(searchKeyword.toLowerCase())
+        );
+        const paginatedCourses = filteredCourses.slice(pageNumber * pageSize, (pageNumber + 1) * pageSize);
+        setCourses(paginatedCourses);
     };
 
     const handlePageChange = ({ selected }) => {
@@ -24,15 +28,29 @@ function GridCourse() {
 
     const handleSearchChange = (event) => {
         setSearchKeyword(event.target.value);
+        setPageNumber(0); // Reset to first page when search keyword changes
     };
+
+    const addCourse = (newCourse) => {
+        addCourseAPI(newCourse);
+        fetchData();
+    };
+
+    const editCourse = (updatedCourse) => {
+        editCourseAPI(updatedCourse);
+        fetchData();
+    };
+
+    const deleteCourse = (courseId) => {
+        deleteCourseAPI(courseId);
+        fetchData();
+    };
+
     return (
         <div className='nicdark_container'>
-
-
             <div className="nicdark_width_100_percentage">
                 <div className="nicdark_section nicdark_padding_15 nicdark_box_sizing_border_box">
                     <div className="nicdark_section nicdark_box_sizing_border_box ">
-                        
                         <div className="nicdark_section nicdark_height_10" />
                         <div className="nicdark_width_70_percentage nicdark_float_left nicdark_width_100_percentage_all_iphone">
                             <div className="nicdark_section nicdark_height_20" />
@@ -42,37 +60,22 @@ function GridCourse() {
                                     <input 
                                         className="nicdark_padding_left_25 nicdark_border_width_2 nicdark_background_none nicdark_border_top_width_0 nicdark_border_right_width_0 nicdark_border_left_width_0" 
                                         type="text" 
-                                        placeholder="Keyword" 
+                                        placeholder="Course name..." 
                                         value={searchKeyword} 
                                         onChange={handleSearchChange} 
                                     />
                                 </div>
                             </div>
-                            <div className="nicdark_width_50_percentage nicdark_float_left">
-                                <div className="nicdark_float_left nicdark_width_100_percentage_all_iphone">
-                                    <a className="nicdark_bg_white_hover nicdark_color_violet_hover nicdark_border_2_solid_violet nicdark_transition_all_08_ease nicdark_display_inline_block nicdark_text_align_center nicdark_box_sizing_border_box nicdark_width_100_percentage nicdark_color_white nicdark_bg_violet nicdark_first_font nicdark_padding_10_20 nicdark_border_radius_3 " href="courses.html">SEARCH</a>
-                                </div>
-                            </div>
+                            
                         </div>
-                        <div className="nicdark_width_30_percentage nicdark_float_left nicdark_text_align_right nicdark_width_100_percentage_all_iphone">
-                            <div className="nicdark_section nicdark_height_20" />
-                            <div className="nicdark_display_inline_block nicdark_bg_blue nicdark_border_1_solid_blue nicdark_padding_8 nicdark_margin_right_10 nicdark_border_radius_3">
-                                <a className="nicdark_tooltip_jquery" title="Advanced Settings" href="#"><img alt className="nicdark_float_left" width={23} src="img/icons/icon-settings-white.svg" /></a>
-                            </div>
-                            <div className="nicdark_display_inline_block nicdark_bg_violet nicdark_border_1_solid_violet nicdark_padding_8 nicdark_margin_right_10 nicdark_border_radius_3">
-                                <a className="nicdark_tooltip_jquery" title="List View" href="#"><img alt className="nicdark_float_left" width={23} src="img/icons/icon-list-white.svg" /></a>
-                            </div>
-                            <div className="nicdark_display_inline_block nicdark_border_1_solid_grey_2 nicdark_padding_8 nicdark_border_radius_3">
-                                <a className="nicdark_tooltip_jquery" title="Grid View" href="#"><img alt className="nicdark_float_left" width={23} src="img/icons/icon-grid-grey.svg" /></a>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
                 <div className="nicdark_width_100_percentage">
                     <div className="nicdark_width_100_percentage">
                         {Array.isArray(courses) && courses.length > 0 ? (
                             courses.map((course) => (
-                                <CourseCard key={course.id} course={course} />
+                                <CourseCard key={course.id} course={course} onEditCourse={editCourse} onDeleteCourse={deleteCourse} />
                             ))
                         ) : (
                             <p>No courses found</p>
@@ -93,7 +96,7 @@ function GridCourse() {
                         breakLabel="..."
                         breakClassName="page-item"
                         breakLinkClassName="page-link"
-                        pageCount={2}
+                        pageCount={Math.ceil(hardcodedCourses.length / pageSize)}
                         marginPagesDisplayed={2}
                         pageRangeDisplayed={5}
                         onPageChange={handlePageChange}
@@ -103,12 +106,9 @@ function GridCourse() {
                     />
                 </div>
             </div>
-
             <div className="nicdark_section nicdark_height_70" />
-
-
         </div>
     )
 }
 
-export default GridCourse
+export default GridCourse;

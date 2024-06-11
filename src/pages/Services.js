@@ -46,57 +46,6 @@ function Services() {
               <p>Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque
                 euismod orci ut et lobortis.</p>
               <div className="nicdark_section nicdark_height_20" />
-              <Link className="nicdark_display_inline_block nicdark_color_grey nicdark_border_1_solid_grey nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13" to={RoutePath.HOME}>READ MORE</Link>
-            </div>
-            <div className="grid grid_3 ">
-              <img alt="img" width={50} src="img/icons/icon-graph-color.svg" />
-              <div className="nicdark_section nicdark_height_20" />
-              <h2><strong>Many Courses</strong></h2>
-              <div className="nicdark_section nicdark_height_20" />
-              <p>Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque
-                euismod orci ut et lobortis.</p>
-              <div className="nicdark_section nicdark_height_20" />
-              <Link className="nicdark_display_inline_block nicdark_color_grey nicdark_border_1_solid_grey nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13" to={RoutePath.HOME}>READ MORE</Link>
-            </div>
-            <div className="grid grid_3 ">
-              <img alt="img" width={50} src="img/icons/icon-support-color.svg" />
-              <div className="nicdark_section nicdark_height_20" />
-              <h2><strong>24 H Support</strong></h2>
-              <div className="nicdark_section nicdark_height_20" />
-              <p>Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque
-                euismod orci ut et lobortis.</p>
-              <div className="nicdark_section nicdark_height_20" />
-              <Link className="nicdark_display_inline_block nicdark_color_grey nicdark_border_1_solid_grey nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13" to={RoutePath.HOME}>READ MORE</Link>
-            </div>
-          </div>
-        </div>
-        <div className="nicdark_section nicdark_height_50" />
-      </div>
-
-
-
-
-      <div>
-        <div className="nicdark_section">
-          <div className="nicdark_container nicdark_clearfix">
-            <div className="grid grid_3 ">
-              <img alt="img" width={50} src="img/icons/icon-award-color.svg" />
-              <div className="nicdark_section nicdark_height_20" />
-              <h2><strong>National Awards</strong></h2>
-              <div className="nicdark_section nicdark_height_20" />
-              <p>Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque
-                euismod orci ut et lobortis.</p>
-              <div className="nicdark_section nicdark_height_20" />
-              <Link className="nicdark_display_inline_block nicdark_color_grey nicdark_border_1_solid_grey nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13" href="#">READ MORE</Link>
-            </div>
-            <div className="grid grid_3 ">
-              <img alt="img" width={50} src="img/icons/icon-graduation-color.svg" />
-              <div className="nicdark_section nicdark_height_20" />
-              <h2><strong>Best Teachers</strong></h2>
-              <div className="nicdark_section nicdark_height_20" />
-              <p>Phasellus enim libero, blandit vel sapien vitae, condimentum ultricies magna et. Quisque
-                euismod orci ut et lobortis.</p>
-              <div className="nicdark_section nicdark_height_20" />
               <Link className="nicdark_display_inline_block nicdark_color_grey nicdark_border_1_solid_grey nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13" href="#">READ MORE</Link>
             </div>
             <div className="grid grid_3 ">
