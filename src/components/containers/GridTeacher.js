@@ -35,7 +35,7 @@ function GridTeacher() {
                         <input
                             className="nicdark_padding_left_25 nicdark_border_width_2 nicdark_background_none nicdark_border_top_width_0 nicdark_border_right_width_0 nicdark_border_left_width_0"
                             type="text"
-                            placeholder="Courser name..."
+                            placeholder="Tên giảng viên..."
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </div>

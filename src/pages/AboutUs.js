@@ -31,18 +31,18 @@ function AboutUs() {
       <div className="nicdark_section">
         <div className="nicdark_container nicdark_clearfix">
           <div className="grid grid_6 nicdark_text_align_right nicdark_text_align_center_responsive">
-            <h1 className="nicdark_font_size_40 nicdark_line_height_50 nicdark_padding_10"><strong>Xin chào. Trường chúng tôi đã có mặt trên thị trường hơn 20 năm. Chúng tôi tận dụng tối đa tất cả các sinh viên của chúng tôi.</strong></h1>
+            <h1 className="nicdark_font_size_40 nicdark_line_height_50 nicdark_padding_10"><strong>Liên hệ với chúng tôi</strong></h1>
           </div>
           <div className="grid grid_6 ">
             <div className="nicdark_width_50_percentage nicdark_width_100_percentage_all_iphone nicdark_float_left">
-              <p className="nicdark_padding_10">Trải nghiệm học tập offline tuyệt vời! Khám phá các khóa học đa dạng và thú vị trên trang web của chúng tôi. Hãy sẵn sàng khám phá kiến thức mới một cách trực tiếp và tương tác với giáo viên và bạn đồng hành.</p>
+              <p className="nicdark_padding_10"><i class="bi bi-telephone-inbound-fill"></i> 0707075152</p>
               <div className="nicdark_section nicdark_height_20" />
-              <p className="nicdark_padding_10">Tạo cơ hội cho sự học hỏi offline. Với sự thuận tiện của việc đăng ký và tham gia các khóa học offline trên trang web của chúng tôi, bạn có thể dễ dàng tìm kiếm và tham gia vào các buổi học offline đầy kích thích.</p>
+              <p className="nicdark_padding_10"><i class="bi bi-envelope"></i> educonnectdn@gmail.com</p>
             </div>
-            <div className="nicdark_width_50_percentage nicdark_width_100_percentage_all_iphone nicdark_float_left">
-              <p className="nicdark_padding_10">Khám phá sức hút của việc học tập trực tiếp. Với sự linh hoạt trong lựa chọn các khóa học offline, bạn có thể tận hưởng không gian học tập truyền cảm hứng và thú vị cùng với sự hướng dẫn chuyên nghiệp từ giáo viên.</p>
+            <div className="nicdark_width_100_percentage nicdark_width_100_percentage_all_iphone nicdark_float_left">
+              <p className="">  </p>
               <div className="nicdark_section nicdark_height_20" />
-              <p className="nicdark_padding_10">Hãy đến và trải nghiệm sự khác biệt. Với trải nghiệm học tập offline trên trang web của chúng tôi, bạn sẽ có cơ hội gặp gỡ, kết nối và học hỏi từ các chuyên gia trong lĩnh vực mà bạn đam mê.</p>
+              <p className="nicdark_padding_10"><i class="bi bi-geo-alt-fill"></i> Quận Hải Châu thành phố Đà Nẵng</p>
             </div>
           </div>
           <div className="nicdark_section nicdark_height_40" />

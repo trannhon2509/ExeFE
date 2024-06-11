@@ -1,26 +1,15 @@
 // data.js
 
 let courses = JSON.parse(localStorage.getItem('courses')) || [
-    { id: 1, title: 'Khóa học 1', description: 'Mô tả cho khóa học 1', totalMoneyMonthTeaching: 1000, numberTeachOfWeek: 3, oneHourTeaching: 2, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 2, title: 'Khóa học 2', description: 'Mô tả cho khóa học 2', totalMoneyMonthTeaching: 1500, numberTeachOfWeek: 2, oneHourTeaching: 1.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 3, title: 'Khóa học 3', description: 'Mô tả cho khóa học 3', totalMoneyMonthTeaching: 2000, numberTeachOfWeek: 4, oneHourTeaching: 3, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 4, title: 'Khóa học 4', description: 'Mô tả cho khóa học 4', totalMoneyMonthTeaching: 2500, numberTeachOfWeek: 3, oneHourTeaching: 2.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 5, title: 'Khóa học 5', description: 'Mô tả cho khóa học 5', totalMoneyMonthTeaching: 3000, numberTeachOfWeek: 2, oneHourTeaching: 2, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 6, title: 'Khóa học 6', description: 'Mô tả cho khóa học 6', totalMoneyMonthTeaching: 3500, numberTeachOfWeek: 4, oneHourTeaching: 3.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 7, title: 'Khóa học 7', description: 'Mô tả cho khóa học 7', totalMoneyMonthTeaching: 4000, numberTeachOfWeek: 3, oneHourTeaching: 3, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 8, title: 'Khóa học 8', description: 'Mô tả cho khóa học 8', totalMoneyMonthTeaching: 4500, numberTeachOfWeek: 2, oneHourTeaching: 2.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 9, title: 'Khóa học 9', description: 'Mô tả cho khóa học 9', totalMoneyMonthTeaching: 5000, numberTeachOfWeek: 4, oneHourTeaching: 4, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 10, title: 'Khóa học 10', description: 'Mô tả cho khóa học 10', totalMoneyMonthTeaching: 5500, numberTeachOfWeek: 3, oneHourTeaching: 3.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 11, title: 'Khóa học 11', description: 'Mô tả cho khóa học 11', totalMoneyMonthTeaching: 6000, numberTeachOfWeek: 2, oneHourTeaching: 3, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 12, title: 'Khóa học 12', description: 'Mô tả cho khóa học 12', totalMoneyMonthTeaching: 6500, numberTeachOfWeek: 4, oneHourTeaching: 4.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 13, title: 'Khóa học 13', description: 'Mô tả cho khóa học 13', totalMoneyMonthTeaching: 7000, numberTeachOfWeek: 3, oneHourTeaching: 4, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 14, title: 'Khóa học 14', description: 'Mô tả cho khóa học 14', totalMoneyMonthTeaching: 7500, numberTeachOfWeek: 2, oneHourTeaching: 3.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 15, title: 'Khóa học 15', description: 'Mô tả cho khóa học 15', totalMoneyMonthTeaching: 8000, numberTeachOfWeek: 4, oneHourTeaching: 5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 16, title: 'Khóa học 16', description: 'Mô tả cho khóa học 16', totalMoneyMonthTeaching: 8500, numberTeachOfWeek: 3, oneHourTeaching: 4.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 17, title: 'Khóa học 17', description: 'Mô tả cho khóa học 17', totalMoneyMonthTeaching: 9000, numberTeachOfWeek: 2, oneHourTeaching: 4, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 18, title: 'Khóa học 18', description: 'Mô tả cho khóa học 18', totalMoneyMonthTeaching: 9500, numberTeachOfWeek: 4, oneHourTeaching: 5.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 19, title: 'Khóa học 19', description: 'Mô tả cho khóa học 19', totalMoneyMonthTeaching: 10000, numberTeachOfWeek: 3, oneHourTeaching: 5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' },
-    { id: 20, title: 'Khóa học 20', description: 'Mô tả cho khóa học 20', totalMoneyMonthTeaching: 10500, numberTeachOfWeek: 2, oneHourTeaching: 4.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0' }
+    { id: 1, title: 'Toán cấp 3', description: ' Học sinh sẽ học về đại số, giải tích, hình học, xác suất và thống kê. Mục tiêu là giúp học sinh hiểu và áp dụng các khái niệm toán học vào việc giải quyết các vấn đề thực tế và trừu tượng. ', totalMoneyMonthTeaching: 1500000, numberTeachOfWeek: 3, oneHourTeaching: 1.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0', teacher: 'Thanh Thảo'},
+    { id: 2, title: 'Tiếng anh cấp 2', description: 'Dạy các kiến thức căn bản về ngữ pháp tiếng anh giúp nắm rõ được kiến thức và tự tin giao tiếp', totalMoneyMonthTeaching: 1500000, numberTeachOfWeek: 3, oneHourTeaching: 1.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0', teacher: 'Linh Chi' },
+    { id: 3, title: 'Anh văn', description: 'Giúp học sinh nắm vứng các kiến thức tiếng anh cơ bản và nâng cao một cách nhanh chóng', totalMoneyMonthTeaching: 1500000, numberTeachOfWeek: 3, oneHourTeaching: 1.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0', teacher: 'Quốc Nhật' },
+    { id: 4, title: 'Hóa học', description: 'Học sinh sẽ học được cách sử dụng các công thức và nắm rõ lí thuyết về hóa học.', totalMoneyMonthTeaching: 1500000, numberTeachOfWeek: 3, oneHourTeaching: 1.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0', teacher: 'Gia Khiêm' },
+    { id: 5, title: 'Ngữ văn', description: 'Truyền cảm hứng cho học sinh đam mê các tác phẩm và cảm thụ văn học', totalMoneyMonthTeaching: 1500000, numberTeachOfWeek: 3, oneHourTeaching: 2, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0', teacher: 'Thùy Dung' },
+    { id: 6, title: 'VẬT LÝ CẤP 2', description: 'Học sinh sẽ đạt được những kĩ năng cần thiết cho việc đạt được điểm cao trong các bài kiểm tra, kì thi.', totalMoneyMonthTeaching: 1500000, numberTeachOfWeek: 3, oneHourTeaching: 1.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0', teacher: 'Duy Nguyễn' },
+    { id: 7, title: 'Tin Học', description: 'Học sinh sẽ có được kĩ năng lập trình cùng tư duy logic giúp viết được những chương trình từ nhỏ đến lớn.', totalMoneyMonthTeaching: 1500000, numberTeachOfWeek: 3, oneHourTeaching: 1.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0', teacher: 'Phạm Thế Toàn' },
+    { id: 8, title: 'Giáo dục công dân', description: 'Nắm rõ các khái niệm thế giới quan và sự vận động của thế giới quan.', totalMoneyMonthTeaching: 1500000, numberTeachOfWeek: 3, oneHourTeaching: 1.5, imageUrl: 'https://th.bing.com/th/id/R.522f14e917d448c38fd0b881cd0bf8c0?rik=%2bOrvgsrsH1a0fA&riu=http%3a%2f%2fddragon.leagueoflegends.com%2fcdn%2fimg%2fchampion%2fsplash%2fYasuo_0.jpg&ehk=4I7x7dScQGL4ElrGSXmoqT3q40wB%2f9QZX67IpgsNGDk%3d&risl=&pid=ImgRaw&r=0', teacher: 'Hải Đăng' },
+   
 ];
 let users = JSON.parse(localStorage.getItem('users')) || [
     { id: 1, username: 'user1', password: 'pass1', email: 'user1@example.com', imageUrl : 'https://www.bing.com/th/id/OIP.Ui8U6RfUSMOP0LiBzQv4wAHaEX?w=300&h=180&c=7&r=0&o=5&pid=1.7' },
@@ -34,65 +23,65 @@ let users = JSON.parse(localStorage.getItem('users')) || [
 let teachers = JSON.parse(localStorage.getItem('teachers')) || [
       {
             id: 1,
-            fullName: 'John Doe',
-            major: 'Toán',
-            description: 'Giáo viên toán có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
-            cardPhoto: 'https://www.bing.com/th/id/OIP.Ui8U6RfUSMOP0LiBzQv4wAHaEX?w=300&h=180&c=7&r=0&o=5&pid=1.7'
+            fullName: 'Thanh Thảo',
+            major: 'Toán cấp 3',
+            description: 'Gia sư Thanh Thảo đạt được 9 điểm môn Toán trong kì thi THPT quốc gia.',
+            cardPhoto: 'https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-6/425530819_3312519245708190_2849646581664534520_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=0Al50LbFemYQ7kNvgGCjD0f&_nc_ht=scontent.fdad3-6.fna&oh=00_AYCQZxKWM7QZO4YwI2_O2hSM1brTd2P7lYQPEOgub3xP6A&oe=666E50FF'
         },
         {
             id: 2,
-            fullName: 'Jane Smith',
-            major: 'Khoa học',
-            description: 'Giáo viên toán có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
-            cardPhoto: 'https://th.bing.com/th/id/OIP.T242IUQAYZJ3ZQibMAu-3AHaHa?rs=1&pid=ImgDetMain'
+            fullName: 'Linh Chi',
+            major: 'Tiếng anh cấp 2',
+            description: 'Đạt được chứng chỉ Ielts 7.0.',
+            cardPhoto: 'https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-6/425487361_2067618606971367_788842695829969423_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=QCNOHcUzfA8Q7kNvgFfI9I1&_nc_ht=scontent.fdad3-6.fna&oh=00_AYAjJ0PAxZWiSJHNbsswzl5m4RJHzVXheah61Buk3HGcfg&oe=666E4D3D'
         },
         {
             id: 3,
-            fullName: 'Jane Smith',
-            major: 'Khoa học',
-            description: 'Giáo viên toán có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
-            cardPhoto: 'https://th.bing.com/th/id/OIP.T242IUQAYZJ3ZQibMAu-3AHaHa?rs=1&pid=ImgDetMain'
+            fullName: 'Quốc Nhật',
+            major: 'Anh Văn',
+            description: 'Đạt giải học sinh giỏi Tiếng Anh THPT cấp tỉnh, Toeic 950+.',
+            cardPhoto: 'https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-6/240586237_923210768581364_3782682517511834643_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_ohc=sce7_uoywEkQ7kNvgGNd1gl&_nc_ht=scontent.fdad3-6.fna&oh=00_AYDECskPWLXTucF-lIA2f5POC1B34lc4oQNbUoKRUSqe-A&oe=666E64EF'
         },
         {
             id: 4,
-            fullName: 'Jane Smith',
-            major: 'Khoa học',
-            description: 'Giáo viên toán có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
-            cardPhoto: 'https://th.bing.com/th/id/OIP.T242IUQAYZJ3ZQibMAu-3AHaHa?rs=1&pid=ImgDetMain'
+            fullName: 'Gia Khiêm',
+            major: 'Hóa học',
+            description: 'Đạt giải học sinh giỏi Hóa THPT cấp tỉnh.',
+            cardPhoto: 'https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-6/426570607_1567731510709251_237631422209618103_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=KM6z8bD91T0Q7kNvgEFt_2l&_nc_ht=scontent.fdad3-6.fna&oh=00_AYCK6A9ClaQ_KnqVvGoEi9GH3cTJWhUojmB2uw-vtgJO0A&oe=666E4C9B'
         },
         {
             id: 5,
-            fullName: 'Jane Smith',
-            major: 'Khoa học',
-            description: 'Giáo viên toán có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
-            cardPhoto: 'https://th.bing.com/th/id/OIP.T242IUQAYZJ3ZQibMAu-3AHaHa?rs=1&pid=ImgDetMain'
+            fullName: 'Thùy Dung',
+            major: 'Ngữ Văn',
+            description: 'Gia sư Thùy Dung được 9 điểm đại học môn Ngữ Văn thi THPTQG.',
+            cardPhoto: 'https://scontent.fdad3-6.fna.fbcdn.net/v/t1.6435-9/152027004_417516092885284_6768466982326972777_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=rYTYLMEwvm4Q7kNvgEkFLDh&_nc_ht=scontent.fdad3-6.fna&oh=00_AYAJNLUL7XfvAehLEZ_BsMZzIS3aG0kFP6hoPOwlNlK5Zw&oe=6690015E'
         },
         {
             id: 6,
-            fullName: 'Jane Smith',
-            major: 'Khoa học',
-            description: 'Giáo viên toán có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
-            cardPhoto: 'https://th.bing.com/th/id/OIP.T242IUQAYZJ3ZQibMAu-3AHaHa?rs=1&pid=ImgDetMain'
+            fullName: 'Duy Nguyễn',
+            major: 'Vật Lý cấp 2',
+            description: 'Gia sư Duy Nguyễn được giải nhất môn Lý quốc gia.',
+            cardPhoto: 'https://nupet.vn/wp-content/uploads/2023/10/anh-avatar-cute-meo-nupet-2.jpg'
         },
         {
             id: 7,
-            fullName: 'Jane Smith',
-            major: 'Khoa học',
-            description: 'Giáo viên toán có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
-            cardPhoto: 'https://th.bing.com/th/id/OIP.T242IUQAYZJ3ZQibMAu-3AHaHa?rs=1&pid=ImgDetMain'
+            fullName: 'Phạm Thế Toàn',
+            major: 'Tin học',
+            description: 'Đạt cóc vàng ngành công nghệ thông tin hai kì liên tiếp.',
+            cardPhoto: 'https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/348550500_1274343566518552_1143215131442838660_n.jpg?stp=dst-jpg_s200x200&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=JhaVxDaCLrgQ7kNvgHyCS9Y&_nc_ht=scontent.fdad3-6.fna&oh=00_AYDEAp49sLmJpfbdMPsuQAmraiR2WzrqQMTCbD4K3DwSuA&oe=666E5BE1'
         },
         {
             id: 8,
-            fullName: 'Jane Smith',
-            major: 'Khoa học',
-            description: 'Giáo viên toán có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
-            cardPhoto: 'https://th.bing.com/th/id/OIP.T242IUQAYZJ3ZQibMAu-3AHaHa?rs=1&pid=ImgDetMain'
+            fullName: 'Hải Đăng',
+            major: 'Giáo dục công dân',
+            description: 'Giáo viên có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
+            cardPhoto: 'https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-1/438254617_1849435958853907_7267040531784479874_n.jpg?stp=dst-jpg_p200x200&_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=uO9uCjs1C5gQ7kNvgGh2k62&_nc_ht=scontent.fdad3-6.fna&oh=00_AYACQwPDaGaJl12qCg6bpmQJXQmmokr0OVZREc5Mi8-lQA&oe=666E6346'
         },
         {
             id: 9,
             fullName: 'Jane Smith',
             major: 'Khoa học',
-            description: 'Giáo viên toán có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
+            description: 'Giáo viên có kinh nghiệm với niềm đam mê dạy và giúp đỡ học sinh thành công.',
             cardPhoto: 'https://th.bing.com/th/id/OIP.T242IUQAYZJ3ZQibMAu-3AHaHa?rs=1&pid=ImgDetMain'
         },
         {

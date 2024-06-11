@@ -8,9 +8,9 @@ function TeacherSingle() {
                 {/*start nicdark_container*/}
                 <div className="nicdark_container nicdark_clearfix">
                     <div className="grid grid_12">
-                        <a href="#">Home</a>
+                        <a href="#">Trang chủ</a>
                         <img alt className="nicdark_margin_left_10 nicdark_margin_right_10" width={10} src="img/icons/icon-next-grey.svg" />
-                        <a href="#">Teachers</a>
+                        <a href="#">Gia sư</a>
                         <img alt className="nicdark_margin_left_10 nicdark_margin_right_10" width={10} src="img/icons/icon-next-grey.svg" />
                         <a href="#">{teacher.fullName}</a>
                     </div>
@@ -30,7 +30,7 @@ function TeacherSingle() {
                         <div className="grid grid_6">
                             <div className="nicdark_display_table nicdark_float_left nicdark_display_none_all_iphone">
                                 <div className="nicdark_display_table_cell nicdark_vertical_align_middle">
-                                    <img alt className="nicdark_margin_right_20 nicdark_border_radius_100_percentage " width={150} src="img/avatar/avatar-chef-2.jpg" />
+                                    <img alt className="nicdark_margin_right_20 nicdark_border_radius_100_percentage " width={150} src={"img/avatar/avatar-chef-2.jpg"} />
                                 </div>
                                 <div className="nicdark_display_table_cell nicdark_vertical_align_middle">
                                     <strong className="nicdark_color_white nicdark_font_size_40 nicdark_first_font">{teacher.fullName}</strong>

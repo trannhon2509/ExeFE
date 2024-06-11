@@ -16,7 +16,7 @@ function CourseSingle() {
                         <img alt className="nicdark_margin_left_10 nicdark_margin_right_10" width={10} src="img/icons/icon-next-grey.svg" />
                         <a href="#">Courses</a>
                         <img alt className="nicdark_margin_left_10 nicdark_margin_right_10" width={10} src="img/icons/icon-next-grey.svg" />
-                        <a href="#">{course.subjectName}</a>
+                        <a href="#">{course.title}</a>
                     </div>
                 </div>
                 {/*end container*/}

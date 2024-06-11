@@ -22,9 +22,9 @@ function SideBar() {
                 <Link to={RoutePath.ADMINCOURSE} className="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
                     <h2>Subject</h2>
                 </Link>
-                {/* <Link to={RoutePath.ADMINPAYMENT}  className="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
+                <Link to={RoutePath.ADMINPAYMENT}  className="list-group-item list-group-item-action py-3 lh-tight" aria-current="true">
                     <h2>Payment</h2>
-                </Link> */}
+                </Link>
             </div>
         </div>
     )

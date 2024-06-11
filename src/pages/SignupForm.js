@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { users } from '../data'; // Import dữ liệu users từ file data.js
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SignupForm = () => {
     const [formData, setFormData] = useState({
@@ -12,8 +16,6 @@ const SignupForm = () => {
         phoneNumber: '',
     });
 
-    const [message, setMessage] = useState(null);
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -24,42 +26,53 @@ const SignupForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        fetch('http://localhost:8080/auth/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                setMessage('Signup successful!');
-                console.log('Signup successful:', data);
-                // Đoạn này có thể điều hướng người dùng đến một trang khác sau khi đăng ký thành công.
-            })
-            .catch(error => {
-                setMessage('Signup failed. Please try again.');
-                console.error('Error signing up:', error);
-            });
+
+        // Kiểm tra xem username đã tồn tại chưa
+        const existingUser = users.find(user => user.username === formData.username);
+        if (existingUser) {
+            toast.error('Username already exists. Please choose another one.');
+            return;
+        }
+
+        // Kiểm tra xem email đã tồn tại chưa
+        const existingEmail = users.find(user => user.email === formData.email);
+        if (existingEmail) {
+            toast.error('Email already exists. Please use another one.');
+            return;
+        }
+
+        // Tạo user mới từ thông tin người dùng
+        const newUser = {
+            id: users.length + 1,
+            username: formData.username,
+            password: formData.password,
+            email: formData.email,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            address: formData.address,
+            phoneNumber: formData.phoneNumber,
+        };
+
+        // Thêm user mới vào mảng users
+        users.push(newUser);
+        toast.success('Signup successful!');
+        console.log('New user:', newUser);
     };
 
     return (
         <div className="container">
-            {message && <div className="alert alert-success">{message}</div>}
+            <ToastContainer />
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <input type="email" className="form-control" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
                 </div>
-                <div className="mb-3">
-                    <input type="text" className="form-control" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
-                </div>
-                <div className="mb-3">
-                    <input type="text" className="form-control" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
+                <div className="row">
+                    <div className="col-md-6 mb-3">
+                        <input type="text" className="form-control" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
+                    </div>
+                    <div className="col-md-6 mb-3">
+                        <input type="text" className="form-control" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
+                    </div>
                 </div>
                 <div className="mb-3">
                     <input type="text" className="form-control" name="address" value={formData.address} onChange={handleChange} placeholder="Address" />

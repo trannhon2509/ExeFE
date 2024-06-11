@@ -12,7 +12,7 @@ function CartItem({ course, onRemove, onUpdateQuantity }) {
                 {course.title}
             </th>
             <td >
-                ${course.totalMoneyMonthTeaching}
+                {(course.totalMoneyMonthTeaching).toLocaleString('vi-VN')} VNĐ
             </td>
             <td >
                 <input
@@ -26,7 +26,7 @@ function CartItem({ course, onRemove, onUpdateQuantity }) {
                 />
             </td>
             <td >
-                {course.totalMoneyMonthTeaching * course.quantity}
+                {(course.totalMoneyMonthTeaching * course.quantity).toLocaleString('vi-VN')} VNĐ
             </td>
             <td>
                 <img

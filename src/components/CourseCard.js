@@ -6,8 +6,14 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function CourseCard({ course }) {
-    const { id, title, description, totalMoneyMonthTeaching, numberTeachOfWeek, oneHourTeaching, imageUrl } = course;
+    const { id, title, description, totalMoneyMonthTeaching, numberTeachOfWeek, oneHourTeaching, imageUrl, teacher } = course;
     const { setCourse } = useContext(TeacherContext);
+
+    const shortenDescription = (text, maxLength) => {
+        if (text.length <= maxLength) return text;
+        return text.substr(0, maxLength) + '...';
+    };
+    
 
     const handleRegister = () => {
         const coursesInLocalStorage = JSON.parse(localStorage.getItem('coursesCard')) || [];
@@ -33,7 +39,7 @@ function CourseCard({ course }) {
             <div className="nicdark_section nicdark_padding_15 nicdark_box_sizing_border_box">
                 <div className="nicdark_section nicdark_border_1_solid_grey">
                     <div className="nicdark_section nicdark_position_relative">
-                        <img alt="course" className="nicdark_section" src={course.imageUrl}/>
+                        <img alt="course" className="nicdark_section" height={230} style={{objectFit: 'cover'}} src={course.imageUrl}/>
                         <div className="nicdark_bg_greydark_alpha_gradient_2 nicdark_position_absolute nicdark_left_0 nicdark_height_100_percentage nicdark_width_100_percentage nicdark_padding_20 nicdark_box_sizing_border_box">
                             <a className="nicdark_tooltip_jquery nicdark_position_absolute nicdark_right_0" title="Add To Favorites" href="account.html#tabs-3">
                                 <img alt="heart icon" className="nicdark_margin_right_60" width={25} src="img/icons/icon-heart-white.svg" />
@@ -43,9 +49,9 @@ function CourseCard({ course }) {
                             </a>
                             <div className="nicdark_position_absolute nicdark_bottom_20">
                                 <div className="nicdark_display_table nicdark_float_left">
-                                    <img alt="calendar icon" className="nicdark_margin_right_10 nicdark_display_table_cell nicdark_vertical_align_middle" width={20} src="img/icons/icon-calendar.svg" />
+                                    {/* <img alt="calendar icon" className="nicdark_margin_right_10 nicdark_display_table_cell nicdark_vertical_align_middle" width={20} src="img/icons/icon-calendar.svg" />
                                     <p className="nicdark_color_white nicdark_display_table_cell nicdark_vertical_align_middle nicdark_font_size_13">
-                                        21/12/2017</p>
+                                        21/12/2017</p> */}
                                     <img alt="clock icon" className="nicdark_margin_right_10 nicdark_margin_left_20 nicdark_display_table_cell nicdark_vertical_align_middle" width={20} src="img/icons/icon-clock.svg" />
                                     <p className="nicdark_color_white nicdark_display_table_cell nicdark_vertical_align_middle nicdark_font_size_13">
                                         {oneHourTeaching} hours</p>
@@ -62,12 +68,13 @@ function CourseCard({ course }) {
                         <div className="nicdark_section nicdark_height_20" />
                         <p>
                             <Link className="nicdark_color_greydark" to={RoutePath.COURSESINGLE} onClick={() => setCourse(course)}>
-                                {description}
+                            <p><strong>Gia sư: </strong>{teacher}</p>   {shortenDescription(description, 37)} {/* Adjust 100 to desired length */}
                             </Link>
                         </p>
                         <div className="nicdark_section nicdark_height_20" />
-                        <p><strong>Tiền học 1 tháng: </strong>{totalMoneyMonthTeaching} VND</p>
+                        <p><strong>Học phí 1 tháng: </strong>{(totalMoneyMonthTeaching).toLocaleString('vi-VN')} VND</p>
                         <p><strong>Số buổi học 1 tuần: </strong>{numberTeachOfWeek}</p>
+                        
                         <button className='w-100 btn btn-primary' onClick={handleRegister}>
                             Đăng kí khóa học
                         </button>

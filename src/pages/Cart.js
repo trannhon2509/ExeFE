@@ -49,9 +49,7 @@ function Cart() {
         localStorage.setItem('coursesCard', JSON.stringify(updatedCourses));
         calculateTotalPrice(updatedCourses);
     };
-
     console.log('Courses in cart:', courses);
-
     return (
         <div className='container'>
             <div className='row'>
@@ -60,11 +58,11 @@ function Cart() {
                     <table className="table table-responsive">
                         <thead>
                             <tr>
-                                <th scope="col">Subject name</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Delete</th>
+                                <th scope="col">Tên khóa học</th>
+                                <th scope="col">Giá</th>
+                                <th scope="col">Số tháng</th>
+                                <th scope="col">Tổng</th>
+                                <th scope="col">Xóa</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -84,7 +82,7 @@ function Cart() {
                         <thead>
                             <tr className="nicdark_border_bottom_2_solid_grey">
                                 <td className="nicdark_padding_20 nicdark_width_50_percentage">
-                                    <h6 className="nicdark_text_transform_uppercase">TOTALS</h6>
+                                    <h6 className="nicdark_text_transform_uppercase">Tổng</h6>
                                 </td>
                                 <td className="nicdark_padding_20 nicdark_width_50_percentage"></td>
                             </tr>
@@ -95,7 +93,7 @@ function Cart() {
                                     <p>Subtotal</p>
                                 </td>
                                 <td className="nicdark_padding_20">
-                                    <p className="nicdark_color_greydark">$ {totalPrice.toFixed(2)}</p>
+                                    <p className="nicdark_color_greydark">{(totalPrice).toLocaleString('vi-VN')} VNĐ</p>
                                 </td>
                             </tr>
                             <tr className="nicdark_border_bottom_2_solid_grey">
@@ -111,7 +109,7 @@ function Cart() {
                                     <p>Total</p>
                                 </td>
                                 <td className="nicdark_padding_20">
-                                    <h2><strong>$ {totalPrice.toFixed(2)}</strong></h2>
+                                    <h2><strong className='text-nowrap'>{(totalPrice).toLocaleString('vi-VN')} VNĐ</strong></h2>
                                 </td>
                             </tr>
                             <tr>

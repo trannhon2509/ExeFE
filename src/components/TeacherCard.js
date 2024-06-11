@@ -34,7 +34,7 @@ function TeacherCard({ teacher }) {
                         <div className="nicdark_section nicdark_height_10" />
                         <h6 className="nicdark_text_transform_uppercase nicdark_color_grey">{teacher.major}</h6>
                         <div className="nicdark_section nicdark_height_20" />
-                        <p>{teacher.description}</p>
+                        <p style={{height:'90px'}}>{teacher.description}</p>
                         <div className="nicdark_section nicdark_height_20" />
                         <Link
                             className="fw-bold nicdark_display_inline_block nicdark_color_white nicdark_bg_blue nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13"

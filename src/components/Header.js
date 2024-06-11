@@ -89,7 +89,7 @@ function Header() {
                     <Link to={RoutePath.COURSE}>Khóa học</Link>
                   </li>
                   <li>
-                    <Link to={RoutePath.TEACHERS}>Giáo viên</Link>
+                    <Link to={RoutePath.TEACHERS}>Gia sư</Link>
 
                   </li>
                   <li><Link to={RoutePath.ABOUTUS}>Liên hệ</Link></li>
