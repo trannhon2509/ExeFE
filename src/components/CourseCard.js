@@ -66,10 +66,10 @@ function CourseCard({ course }) {
                             </Link>
                         </p>
                         <div className="nicdark_section nicdark_height_20" />
-                        <p><strong>Total Money per Month: </strong>{totalMoneyMonthTeaching} VND</p>
-                        <p><strong>Number of Teachings per Week: </strong>{numberTeachOfWeek}</p>
+                        <p><strong>Tiền học 1 tháng: </strong>{totalMoneyMonthTeaching} VND</p>
+                        <p><strong>Số buổi học 1 tuần: </strong>{numberTeachOfWeek}</p>
                         <button className='w-100 btn btn-primary' onClick={handleRegister}>
-                            Register
+                            Đăng kí khóa học
                         </button>
                     </div>
                 </div>

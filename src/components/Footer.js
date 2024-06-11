@@ -8,13 +8,13 @@ function Footer() {
 
 
 <div>
-  <div className="nicdark_section nicdark_bg_greydark">
+  <div className="nicdark_section bg-secondary">
     <div className="nicdark_section nicdark_height_50" />
     {/*start nicdark_container*/}
     <div className="nicdark_container nicdark_clearfix">
       <div className="grid grid_12 nicdark_text_align_center">
         <div className="nicdark_section">
-          <a href="index.html"><img alt width={200} className src="img/logos/logo-university-white.svg" /></a>
+          <a href="index.html"><img alt width={500} className='' style={{paddingLeft: '100px'}} src="/logo.png"/></a>
         </div>
         <div className="nicdark_section nicdark_height_20" />
         <div className="nicdark_display_inline_block">
@@ -40,16 +40,13 @@ function Footer() {
         <div className="nicdark_navigation_copyright">
           <ul>
             <li>
-              <a href="index.html">HOME</a>
+              <a href="index.html">Trang chủ</a>
             </li>
             <li>
-              <a href="about-us.html">ABOUT US</a>
+              <a href="about-us.html">Giới thiệu</a>
             </li>
             <li>
-              <a href="services.html">SERVICES</a>
-            </li>
-            <li>
-              <a href="contact-1.html">CONTACT</a>
+              <a href="contact-1.html">Liên hệ</a>
             </li>
           </ul>
         </div>

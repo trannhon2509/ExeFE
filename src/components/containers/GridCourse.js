@@ -85,8 +85,8 @@ function GridCourse() {
                 <div className="nicdark_section nicdark_height_50" />
                 <div className="nicdark_section nicdark_text_align_center">
                     <ReactPaginate
-                        previousLabel="Previous"
-                        nextLabel="Next"
+                        previousLabel="Trang trước"
+                        nextLabel="Trang sau"
                         pageClassName="page-item"
                         pageLinkClassName="page-link"
                         previousClassName="page-item"

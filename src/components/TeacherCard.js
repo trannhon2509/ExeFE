@@ -37,11 +37,11 @@ function TeacherCard({ teacher }) {
                         <p>{teacher.description}</p>
                         <div className="nicdark_section nicdark_height_20" />
                         <Link
-                            className="nicdark_display_inline_block nicdark_color_white nicdark_bg_blue nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13"
+                            className="fw-bold nicdark_display_inline_block nicdark_color_white nicdark_bg_blue nicdark_first_font nicdark_padding_8 nicdark_border_radius_3 nicdark_font_size_13"
                             to={RoutePath.TEACHERSINGLE}
                             onClick={handleViewProfile}
                         >
-                            VIEW PROFILE
+                            Xem thông tin
                         </Link>
                     </div>
                 </div>

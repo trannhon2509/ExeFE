@@ -2,64 +2,57 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import RoutePath from '../config/RoutePath';
+import { users } from '../data'; // Import dữ liệu users từ file data.js
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
 
-    const response = await fetch('http://localhost:8080/auth/signin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    });
+    // Tìm user trong data.js dựa trên email và password nhập vào
+    const user = users.find((user) => user.email === email && user.password === password);
 
-    const data = await response.json();
-
-    if (data.status === 200) {
+    if (user) {
+      // Nếu tìm thấy user, đăng nhập thành công
       toast.success('Sign in success');
-      console.log(data.data)
-      localStorage.setItem('token', data.data);
-      
+      localStorage.setItem('token', user.token); // Lưu token vào localStorage
       // Redirect to home page
       window.location.href = RoutePath.HOME;
     } else {
+      // Nếu không tìm thấy user, đăng nhập thất bại
       toast.error('Sign in failed');
     }
   };
 
   return (
     <div className="container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
+      <h2 className='text-white'>Login</h2>
+      <form onSubmit={handleLogin} className='my-5'>
         <div className="mb-3">
-          <label htmlFor="username" className="form-label">Username:</label>
+          <label htmlFor="exampleInputEmail1" className="form-label">Địa chỉ email</label>
           <input
-            type="text"
+            type="email"
             className="form-control"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="password" className="form-label">Password:</label>
+          <label htmlFor="exampleInputPassword1" className="form-label">mật khẩu</label>
           <input
             type="password"
             className="form-control"
-            id="password"
+            id="exampleInputPassword1"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <button type="submit" className="btn btn-primary">Login</button>
+        
+        <button type="submit" className="btn btn-primary my-3">Đăng nhập</button>
       </form>
       <ToastContainer />
     </div>

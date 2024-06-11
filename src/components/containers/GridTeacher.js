@@ -4,16 +4,12 @@ import ReactPaginate from 'react-paginate';
 import { teachers } from '../../data';
 
 function GridTeacher() {
-    // Remove local state for teachers
 
-    // Tên giáo viên được nhập từ trường input
     const [searchTerm, setSearchTerm] = useState('');
-    // Phân trang
     const [pageNumber, setPageNumber] = useState(0);
     const teachersPerPage = 8;
     const pagesVisited = pageNumber * teachersPerPage;
 
-    // Lọc giáo viên theo tên
     const filteredTeachers = teachers.filter(teacher =>
         teacher.fullName.toLowerCase().includes(searchTerm.toLowerCase())
     );
