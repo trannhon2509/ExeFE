@@ -5,32 +5,25 @@ function TeacherSingle() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [feedbackList, setFeedbackList] = useState([]);
 
   useEffect(() => {
-    // Lấy dữ liệu từ Local Storage khi component được mount
-    const storedName = localStorage.getItem("name");
-    const storedEmail = localStorage.getItem("email");
-    const storedFeedback = localStorage.getItem("feedback");
-    if (storedName) setName(storedName);
-    if (storedEmail) setEmail(storedEmail);
-    if (storedFeedback) setFeedback(storedFeedback);
+    // Lấy feedback từ local storage khi component được render lần đầu tiên
+    const storedFeedbackList =
+      JSON.parse(localStorage.getItem("feedbackList")) || [];
+    setFeedbackList(storedFeedbackList);
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const feedbackData = {
-      name,
-      email,
-      feedback,
-    };
-    console.log(feedbackData);
-    // Lưu dữ liệu vào Local Storage
-    localStorage.setItem("name", name);
-    localStorage.setItem("email", email);
-    localStorage.setItem("feedback", feedback);
-    // Bạn có thể gửi feedbackData đến server tại đây.
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newFeedback = { name, email, feedback };
+    const updatedFeedbackList = [...feedbackList, newFeedback];
+    setFeedbackList(updatedFeedbackList);
+    localStorage.setItem("feedbackList", JSON.stringify(updatedFeedbackList));
+    setName("");
+    setEmail("");
+    setFeedback("");
   };
-
   return (
     <div>
       <div className="nicdark_section nicdark_bg_grey nicdark_border_bottom_1_solid_grey">
@@ -72,7 +65,7 @@ function TeacherSingle() {
                     alt
                     className="nicdark_margin_right_20 nicdark_border_radius_100_percentage "
                     width={150}
-                    src={"img/avatar/avatar-chef-2.jpg"}
+                    src={teacher.cardPhoto}
                   />
                 </div>
                 <div className="nicdark_display_table_cell nicdark_vertical_align_middle">
@@ -380,38 +373,6 @@ function TeacherSingle() {
                               <strong>John Doe</strong>
                             </span>
                           </p>
-                          <div className="nicdark_display_table_cell nicdark_vertical_align_middle ">
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className="nicdark_margin_right_10"
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                          </div>
                         </div>
                         <div className="nicdark_section nicdark_height_20" />
                         <div className="nicdark_section">
@@ -439,38 +400,6 @@ function TeacherSingle() {
                               <strong>Nick Hope</strong>
                             </span>
                           </p>
-                          <div className="nicdark_display_table_cell nicdark_vertical_align_middle ">
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className="nicdark_margin_right_10"
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                          </div>
                         </div>
                         <div className="nicdark_section nicdark_height_20" />
                         <div className="nicdark_section">
@@ -483,65 +412,35 @@ function TeacherSingle() {
                           </p>
                         </div>
                       </div>
+                      {/* Hiển thị feedback */}
+                      {feedbackList.map((item, index) => (
+                        <div
+                          key={index}
+                          className="nicdark_section nicdark_border_top_1_solid_grey nicdark_padding_40_20 nicdark_box_sizing_border_box"
+                        >
+                          <div className="nicdark_display_table nicdark_float_left">
+                            <img
+                              alt=""
+                              className="nicdark_display_none_all_iphone nicdark_margin_right_10 nicdark_display_table_cell nicdark_vertical_align_middle nicdark_border_radius_100_percentage"
+                              width={40}
+                              src={`img/avatar/avatar-chef-${
+                                index % 2 === 0 ? "1" : "2"
+                              }.jpg`}
+                            />
+                            <p className="nicdark_display_table_cell nicdark_vertical_align_middle">
+                              <span className="nicdark_color_greydark nicdark_first_font nicdark_margin_right_20">
+                                <strong>{item.name}</strong>
+                              </span>
+                            </p>
+                          </div>
+                          <div className="nicdark_section nicdark_height_20" />
+                          <div className="nicdark_section">
+                            <p>{item.feedback}</p>
+                          </div>
+                        </div>
+                      ))}
                       {/*END comment preview*/}
                       {/*START comment preview*/}
-                      <div className="nicdark_section nicdark_border_top_1_solid_grey nicdark_padding_40_20 nicdark_box_sizing_border_box">
-                        <div className="nicdark_display_table nicdark_float_left">
-                          <img
-                            alt
-                            className="nicdark_display_none_all_iphone nicdark_margin_right_10 nicdark_display_table_cell nicdark_vertical_align_middle nicdark_border_radius_100_percentage"
-                            width={40}
-                            src="img/avatar/avatar-chef-3.jpg"
-                          />
-                          <p className="  nicdark_display_table_cell nicdark_vertical_align_middle ">
-                            <span className="nicdark_color_greydark nicdark_first_font nicdark_margin_right_20">
-                              <strong>Jane Dark</strong>
-                            </span>
-                          </p>
-                          <div className="nicdark_display_table_cell nicdark_vertical_align_middle ">
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                            <img
-                              alt
-                              className="nicdark_margin_right_10"
-                              width={15}
-                              src="img/icons/icon-star-full-yellow.svg"
-                            />
-                          </div>
-                        </div>
-                        <div className="nicdark_section nicdark_height_20" />
-                        <div className="nicdark_section">
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. In et ipsum sit amet ex pulvinar mattis.
-                            Pellentesque vitae purus viverra, aliquet lacus in,
-                            fringilla massa. Suspendisse ac est a nisi aliquet
-                            sollicitudin. Interdum et malesuada fames.
-                          </p>
-                        </div>
-                      </div>
                       {/*END comment preview*/}
                       <div>
                         <h1>Feedback Form</h1>
@@ -577,18 +476,6 @@ function TeacherSingle() {
                           </div>
                           <button type="submit">Submit</button>
                         </form>
-                      </div>
-                      <div>
-                        <h2>Feedback Details</h2>
-                        <p>
-                          <strong>Name:</strong> {name}
-                        </p>
-                        <p>
-                          <strong>Email:</strong> {email}
-                        </p>
-                        <p>
-                          <strong>Feedback:</strong> {feedback}
-                        </p>
                       </div>
                     </div>
                   </div>
